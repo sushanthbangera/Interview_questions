@@ -1,4 +1,4 @@
-package com.onlinetest.zycus.staticclasses;
+package com.onlinetest.zycus.inheritence;
 
 public class B extends A {
 

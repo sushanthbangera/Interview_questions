@@ -24,6 +24,9 @@ public class Employee {
 		this.InsuranceScheme = getInsuranceScheme(this.salary);
 	}
 
+	/*
+	 * for value = 5000 the scheme was not defined
+	 */
 	public String getInsuranceScheme(double salary) {
 		/*
 		 * write your code here to return the scheme on the basis of salary if nothing

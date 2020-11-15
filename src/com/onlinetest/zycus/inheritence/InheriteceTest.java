@@ -1,9 +1,9 @@
-package com.onlinetest.zycus.staticclasses;
+package com.onlinetest.zycus.inheritence;
 
 /*
  *  Online coding test 15 Nov 2020
  */
-public class StaticClasses {
+public class InheriteceTest {
 
 	public static void main(String[] args) {
 
