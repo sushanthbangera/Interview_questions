@@ -1,5 +1,8 @@
 package com.onlinetest.zycus.staticclasses;
 
+/*
+ *  Online coding test 15 Nov 2020
+ */
 public class StaticClasses {
 
 	public static void main(String[] args) {
@@ -11,7 +14,7 @@ public class StaticClasses {
 		a.function();
 		
 		System.out.println("__________________3");
-		System.out.println(a.i);// error
+		System.out.println(a.i);
 		
 		System.out.println("__________________4");
 		a = new A();
@@ -43,8 +46,10 @@ public class StaticClasses {
 		System.out.println("__________________13");
 	}
 	
-	/*
-	 * __________________1
+/*
+ * 
+Had to create the classes to get the below output
+* __________________1
 I am static A
 I am static B
 I am static C

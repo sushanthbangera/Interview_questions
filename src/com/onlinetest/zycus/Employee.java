@@ -3,6 +3,7 @@ package com.onlinetest.zycus;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
+
 /*
  *  Online coding test 15 Nov 2020
  */
@@ -60,7 +61,18 @@ public class Employee {
 	public String getInsuranceScheme() {
 		return InsuranceScheme;
 	}
-	
+
+	public String toString() {
+		StringBuilder empStrBuilder = new StringBuilder();
+		empStrBuilder.append("Name: ").append(this.getName());
+		empStrBuilder.append(" Id: ").append(this.getId());
+		empStrBuilder.append(" Salary: ").append(this.getSalary());
+		empStrBuilder.append(" Designation: ").append(this.getDesignation());
+		empStrBuilder.append(" InsuranceScheme: ").append(this.getInsuranceScheme());
+
+		return empStrBuilder.toString();
+	}
+
 	public static void main(String[] args) {
 		Employee a = new Employee("A", 5000.00, 23, "Clerk");
 		Employee b = new Employee("B", 20000.00, 53, "System Analyst");
@@ -69,7 +81,7 @@ public class Employee {
 		EmployeeServiceImpl.addEmployee(a);
 		EmployeeServiceImpl.addEmployee(b);
 		EmployeeServiceImpl.addEmployee(c);
-		
+
 		EmployeeServiceImpl.deleteEmployee(23);
 
 		System.out.println(EmployeeServiceImpl.showEmpDetails("scheme b"));
@@ -78,10 +90,10 @@ public class Employee {
 }
 
 /*
- * Name: B Salary: 20000.0 Designation: Clerk InsuranceScheme: scheme b
-Name: A Salary: 5000.0 Designation: Clerk InsuranceScheme: scheme c
-Name: name Id: id Salary: salary Designation: Designation InsuranceScheme: InsuranceScheme
-
+ * Name: B Salary: 20000.0 Designation: Clerk InsuranceScheme: scheme b Name: A
+ * Salary: 5000.0 Designation: Clerk InsuranceScheme: scheme c Name: name Id: id
+ * Salary: salary Designation: Designation InsuranceScheme: InsuranceScheme
+ * 
  */
 class EmployeeServiceImpl {
 	// Declare a Hashmap here where key is an Integer and the value is Employee
@@ -118,11 +130,7 @@ class EmployeeServiceImpl {
 		StringBuilder empStrBuilder = new StringBuilder();
 
 		insuranceEmployeeMap.entrySet().forEach(emp -> {
-			empStrBuilder.append("Name: ").append(emp.getValue().getName());
-			empStrBuilder.append(" Id: ").append(emp.getValue().getId());
-			empStrBuilder.append(" Salary: ").append(emp.getValue().getSalary());
-			empStrBuilder.append(" Designation: ").append(emp.getValue().getDesignation());
-			empStrBuilder.append(" InsuranceScheme: ").append(emp.getValue().getInsuranceScheme());
+			empStrBuilder.append(emp.getValue().toString());
 			empStrBuilder.append(System.lineSeparator());
 		});
 
