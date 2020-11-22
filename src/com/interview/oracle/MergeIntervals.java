@@ -1,6 +1,8 @@
 package com.interview.oracle;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.PriorityQueue;
 
@@ -8,50 +10,34 @@ import java.util.PriorityQueue;
  *  19 Nov 2020
  */
 public class MergeIntervals {
-
+	
+	/*
+	 * Reference: https://leetcode.com/problems/merge-intervals/
+	 */
 	public static List<Point> getMergedPairs2(List<Point> input) {
 
-		List<Point> results = new ArrayList<>();
-
-		PriorityQueue<Point> sortedInput = new PriorityQueue<>((a, b) -> (a.x - b.x));
-
-		for (Point p : input) {
-			sortedInput.offer(p);
-		}
-
+		Collections.sort(input, (a, b) -> a.x - b.x);
+		
+		// if array
+		// Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
+	
+		LinkedList<Point> mergedList = new LinkedList<>();
+		
 		// {1,5}, {2, 4}, {3, 6}, {7, 11}, {10, 13}, {20, 25}
-
-		Point curPoint = null;
-
-		Point temp = null;
-
-		while (!sortedInput.isEmpty()) {
-
-			curPoint = sortedInput.poll();
-
-			if (temp == null) {
-				temp = curPoint;
+		
+		input.forEach(point -> {
+			if (mergedList.isEmpty() || mergedList.getLast().y < point.x) {
+				mergedList.add(point);
 			} else {
-				// comparision
-				// 1, 5 .... 3, 6....7, 11
-				if (temp.y > curPoint.y) {
-					continue;
-				} else if (temp.y > curPoint.x && temp.y < curPoint.y) {
-					// 1, 5 .... 3, 6
-					temp.y = curPoint.y;
-				} else {
-					results.add(temp);
-					temp = curPoint;
-				}
+				mergedList.getLast().y = Math.max(mergedList.getLast().y , point.y);
 			}
-		}
-
-		results.add(temp);
-		return results;
+		});
+		
+		return mergedList;
 	}
 
 	/*
-	 * Implemneted during interview
+	 * Implemented during interview
 	 */
 	public static List<Point> getMergedPairs(List<Point> input) {
 
@@ -105,6 +91,8 @@ public class MergeIntervals {
 		input.add(new Point(12, 15));
 		input.add(new Point(8, 11));
 		input.add(new Point(10, 13));
+		input.add(new Point(20, 23));
+		input.add(new Point(21, 24));
 
 		List<Point> result = getMergedPairs2(input);
 
