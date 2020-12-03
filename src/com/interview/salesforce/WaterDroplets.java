@@ -8,6 +8,11 @@ import com.interview.utils.Pair;
 
 /*
  * https://www.geeksforgeeks.org/water-drop-problem/
+ * 
+ * Approach: for each drop find the time required to reach the end of the pipe
+ * 
+ * if the time taken by the drop closer to the end is greater than the time take by the drop away from it,
+ * the drops combine
  */
 public class WaterDroplets {
 
