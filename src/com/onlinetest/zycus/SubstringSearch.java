@@ -1,51 +1,36 @@
 package com.onlinetest.zycus;
 
+/*
+ * Online coding test 15 Nov 2020
+ * 
+ * Similar: https://leetcode.com/problems/repeated-string-match/
+ */
 public class SubstringSearch {
 
+	//return 1 if toFind is a substring obtained by concatenation of infStr
+	
+	// else return 0
+	
+	/*
+	 * Time: O(n) when infStr is single character. n is length of toFind
+	 */
 	public static int find_string(String infStr, String toFind) {
 
-		int result = 0;
-		
-		if (validFindInput(infStr, toFind)) {
+		StringBuilder str = new StringBuilder(infStr);
 
-			int index = infStr.indexOf(toFind.charAt(0));
-			
-			int lengthReq = toFind.length() * (index + 1);
-			
-			while (infStr.length() < lengthReq) {
-
-				if (infStr.length() >= toFind.length()) {
-					if (infStr.contains(toFind)) {
-						result = 1;
-						break;
-					}
-				} 
-				infStr += infStr;
-				
-			}
-
+		while (str.length() < toFind.length()) {
+			str.append(infStr);
 		}
 
-		return result;
-	}
+		if (str.indexOf(toFind) > -1)
+			return 1;
 
-	public static boolean validFindInput2(String infStr, String toFind) {
-		for (int i = 0; i < toFind.length(); i++) {
-			if (infStr.indexOf(toFind.charAt(i)) > -1) {
-				continue;
-			}
-			return false;
-		}
-		return true;
-	}
+		str.append(infStr);
 
-	public static boolean validFindInput(String infStr, String toFind) {
-		for (int i = 0; i < toFind.length(); i++) {
-			if (!(infStr.indexOf(toFind.charAt(i)) > -1)) {
-				return false;
-			}
-		}
-		return true;
+		if (str.indexOf(toFind) > -1)
+			return 1;
+
+		return 0;
 	}
 
 	public static void main(String[] args) {
