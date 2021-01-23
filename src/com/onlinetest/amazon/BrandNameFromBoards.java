@@ -39,7 +39,7 @@ public class BrandNameFromBoards {
 		Stack<Character> stack = new Stack<>();
 
 		for (Character vertice : vertices) {
-			if (!visited.getOrDefault(vertice, Boolean.FALSE)) {
+			if (!visited.getOrDefault(vertice, false)) {
 				toplogicalSortUtil(graph, visited, vertice, stack);
 			}
 		}
@@ -62,13 +62,13 @@ public class BrandNameFromBoards {
 
 		if (destList != null && !destList.isEmpty()) {
 			for (char dest : destList) {
-				if (!visited.getOrDefault(dest, Boolean.FALSE)) {
+				if (!visited.getOrDefault(dest, false)) {
 					toplogicalSortUtil(graph, visited, dest, stack);
 				}
 			}
 		}
 
-		visited.put(vertex, Boolean.TRUE);
+		visited.put(vertex, true);
 		stack.push(vertex);
 	}
 

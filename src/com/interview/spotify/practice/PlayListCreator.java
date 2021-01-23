@@ -55,7 +55,7 @@ public class PlayListCreator {
 		Stack<Integer> stack = new Stack<>();
 
 		for (int i = 0; i < vertices.length; i++) {
-			if (!visited.getOrDefault(vertices[i], Boolean.FALSE)) {
+			if (!visited.getOrDefault(vertices[i], false)) {
 				topologicalSortVisit(graph, visited, stack, vertices[i]);
 			}
 		}
@@ -66,6 +66,11 @@ public class PlayListCreator {
 	private void topologicalSortVisit(Map<Integer, List<Integer>> graph, Map<Integer, Boolean> visited,
 			Stack<Integer> stack, int source) {
 
+		// If its already visited, need not check again
+		if (visited.getOrDefault(source, false)) {
+			return;
+		}
+
 		List<Integer> destList = graph.get(source);
 
 		if (destList != null && !destList.isEmpty()) {
@@ -73,20 +78,20 @@ public class PlayListCreator {
 			/*
 			 * Using functional operations
 			 * 
-			destList.stream().filter((dest) -> !visited.getOrDefault(dest, Boolean.FALSE)).forEachOrdered((dest) -> {
-				topologicalSortVisit(graph, visited, stack, dest);
-			});
-			
-			*/
-			
+			 * destList.stream().filter((dest) -> !visited.getOrDefault(dest,
+			 * Boolean.FALSE)).forEachOrdered((dest) -> { topologicalSortVisit(graph,
+			 * visited, stack, dest); });
+			 * 
+			 */
+
 			for (int dest : destList) {
-				if (!visited.getOrDefault(dest, Boolean.FALSE)) {
+				if (!visited.getOrDefault(dest, false)) {
 					topologicalSortVisit(graph, visited, stack, dest);
 				}
 			}
 		}
 
-		visited.put(source, Boolean.TRUE);
+		visited.put(source, true);
 		stack.push(source);
 	}
 
