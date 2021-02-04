@@ -3,6 +3,12 @@ package com.interview.wallmart;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/*
+ * 
+ * Create a simple producer consumer without using the blocking queue
+ * 
+ * Such that the producer waits when the queue is full and the consumer waits when queue is empty
+ */
 public class ProducerConsumer {
 
 	private Queue<Integer> queue = new LinkedList<>();
@@ -24,7 +30,7 @@ public class ProducerConsumer {
 			}
 
 			queue.add(value++);
-			
+
 			notify();
 		}
 
@@ -40,7 +46,7 @@ public class ProducerConsumer {
 			}
 
 			queue.remove();
-			
+
 			notify();
 		}
 	}

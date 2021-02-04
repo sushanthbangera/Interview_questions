@@ -6,6 +6,9 @@ import java.util.PriorityQueue;
  * [1,5,9],
  * [10,11,13],
  * [12,13,15]
+ * 
+ * Given a matrix with all numbers in ascending order row wise and column wise
+ * Find the Kth minimum
  */
 public class KthSmallestInMatrix {
 

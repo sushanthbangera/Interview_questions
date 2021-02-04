@@ -1,5 +1,9 @@
 package com.interview.wallmart;
 
+/*
+ *  Print the letter a and b continuously in a sequence using 2 threads
+ * 
+ */
 public class PrintString {
 
 	private int limit = 10;
