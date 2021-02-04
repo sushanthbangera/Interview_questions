@@ -8,16 +8,19 @@ public class ThreadInterrupts extends Thread {
 
 		while (process) {
 
-			if (!Thread.interrupted()) {
-				// do the task
+			if (Thread.interrupted()) {
+				// stop the process
+			} else {
+				// continue the process
 			}
 		}
 	}
 	
 	public static void main(String[] args) {
 		
-		ThreadInterrupts a = new ThreadInterrupts();
-		a.interrupt();
+		ThreadInterrupts t = new ThreadInterrupts();
+		t.start();
+		t.interrupt();
 	}
 
 }
