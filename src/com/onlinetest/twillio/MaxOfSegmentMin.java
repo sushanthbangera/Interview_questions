@@ -7,6 +7,9 @@ import java.util.List;
 
 public class MaxOfSegmentMin {
 
+	/*
+	 * Time: O(n)
+	 */
 	public int segment(int k, List<Integer> space) {
 
 		int n = space.size();
@@ -41,6 +44,28 @@ public class MaxOfSegmentMin {
 		maxOfMin = Math.max(space.get(dq.peekFirst()), maxOfMin);
 		return maxOfMin;
 	}
+	
+	/*
+	 * Time: O(n*n)
+	 */
+	public int segment_BruteForce(int k, List<Integer> space) {
+		
+		int maxOfMin = Integer.MIN_VALUE;
+		int currentMin = Integer.MAX_VALUE;
+		
+		for (int i = 0; i <= space.size() - k; i++) {
+			
+			currentMin = Integer.MAX_VALUE;
+			
+			for (int j = i; j < i + k; j++) {
+				currentMin = Math.min(currentMin, space.get(j));
+			}
+			
+			maxOfMin = Math.max(maxOfMin, currentMin);
+		}
+		
+		return maxOfMin;
+	}
 
 	public static void main(String[] args) {
 
@@ -49,5 +74,6 @@ public class MaxOfSegmentMin {
 
 		MaxOfSegmentMin maxOfMin = new MaxOfSegmentMin();
 		System.out.println(maxOfMin.segment(k, space));
+		System.out.println(maxOfMin.segment_BruteForce(k, space));
 	}
 }
