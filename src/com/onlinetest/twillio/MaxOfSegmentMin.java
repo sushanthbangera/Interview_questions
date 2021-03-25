@@ -69,8 +69,8 @@ public class MaxOfSegmentMin {
 
 	public static void main(String[] args) {
 
-		List<Integer> space = Arrays.asList(new Integer[] { 1, 3, 7, 2, 5, 6, 4 });
-		int k = 3;
+		List<Integer> space = Arrays.asList(new Integer[] {1, 2, 3, 1, 2 });
+		int k = 5;
 
 		MaxOfSegmentMin maxOfMin = new MaxOfSegmentMin();
 		System.out.println(maxOfMin.segment(k, space));

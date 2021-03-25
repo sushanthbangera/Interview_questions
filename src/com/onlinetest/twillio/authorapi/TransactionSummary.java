@@ -56,6 +56,7 @@ public class TransactionSummary {
 						transctions.add(transaction);
 						
 						String amt = transaction.getAmount().substring(1);
+						
 						amt = amt.replaceAll(",", "");
 						amount += Double.parseDouble(amt);
 					}
