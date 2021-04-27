@@ -1,4 +1,4 @@
-package com.interview.wallmart;
+package com.wallmart.interview.algo;
 
 import java.util.PriorityQueue;
 

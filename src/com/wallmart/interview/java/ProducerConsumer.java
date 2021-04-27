@@ -1,4 +1,4 @@
-package com.interview.wallmart;
+package com.wallmart.interview.java;
 
 import java.util.LinkedList;
 import java.util.Queue;

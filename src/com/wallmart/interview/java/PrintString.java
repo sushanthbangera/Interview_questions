@@ -1,4 +1,4 @@
-package com.interview.wallmart;
+package com.wallmart.interview.java;
 
 /*
  *  Print the letter a and b continuously in a sequence using 2 threads
